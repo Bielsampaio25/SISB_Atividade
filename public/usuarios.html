@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leitores & Usuários - SISB | SENAI CIMATEC</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <a href="index.html" class="nav-brand">
+      <span class="brand-badge">SENAI</span>
+      <span class="brand-title">SISB</span>
+      <span class="nav-subtitle">Leitores & Usuários</span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="livros.html">Catálogo de Livros</a></li>
+        <li><a href="emprestimos.html">Empréstimos & Circulação</a></li>
+        <li><a href="usuarios.html" class="active">Leitores & Usuários</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Container -->
+  <main class="container">
+    <div class="page-header">
+      <div class="page-title">
+        <h1>Quadro de Leitores</h1>
+        <p>Gerencie o cadastro de estudantes, instrutores e funcionários cadastrados na biblioteca.</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="abrirModal('modal-novo-usuario')">+ Novo Leitor</button>
+      </div>
+    </div>
+
+    <!-- Tabela de Usuários -->
+    <div class="card">
+      <div class="card-header">
+        <h2>Leitores Ativos</h2>
+      </div>
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th style="width: 70px;">ID</th>
+              <th>Nome Completo</th>
+              <th>Matrícula SENAI</th>
+              <th>E-mail Institucional</th>
+              <th>Telefone</th>
+              <th>Data Cadastro</th>
+            </tr>
+          </thead>
+          <tbody id="tabela-usuarios">
+            <tr>
+              <td colspan="6" style="text-align: center; color: var(--muted); padding: 2rem;">Carregando usuários...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal Cadastrar Usuário -->
+  <div class="modal-overlay" id="modal-novo-usuario">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Cadastrar Novo Leitor</h3>
+        <button class="modal-close" onclick="fecharModal('modal-novo-usuario')">&times;</button>
+      </div>
+      <form id="form-novo-usuario">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="usuario-nome">Nome Completo: *</label>
+            <input type="text" id="usuario-nome" class="form-control" required placeholder="Ex: Ana Clara Menezes">
+          </div>
+
+          <div class="form-group">
+            <label for="usuario-matricula">Matrícula SENAI: *</label>
+            <input type="text" id="usuario-matricula" class="form-control" required placeholder="Ex: SENAI-202499">
+          </div>
+
+          <div class="form-group">
+            <label for="usuario-email">E-mail: *</label>
+            <input type="email" id="usuario-email" class="form-control" required placeholder="Ex: ana.menezes@aluno.senai.br">
+          </div>
+
+          <div class="form-group">
+            <label for="usuario-telefone">Telefone / WhatsApp:</label>
+            <input type="text" id="usuario-telefone" class="form-control" placeholder="Ex: (71) 99999-8888">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="fecharModal('modal-novo-usuario')">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Cadastrar Leitor</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Rodapé -->
+  <footer class="footer">
+    <p>SISB © 2026 - SENAI CIMATEC | Disciplina: Manutenção e Testes de Sistemas</p>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/usuarios.js"></script>
+</body>
+</html>

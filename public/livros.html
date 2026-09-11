@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo de Livros - SISB | SENAI CIMATEC</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <a href="index.html" class="nav-brand">
+      <span class="brand-badge">SENAI</span>
+      <span class="brand-title">SISB</span>
+      <span class="nav-subtitle">Catálogo de Livros</span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="livros.html" class="active">Catálogo de Livros</a></li>
+        <li><a href="emprestimos.html">Empréstimos & Circulação</a></li>
+        <li><a href="usuarios.html">Leitores & Usuários</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Container -->
+  <main class="container">
+    <div class="page-header">
+      <div class="page-title">
+        <h1>Acervo Bibliográfico</h1>
+        <p>Consulte, filtre e registre novos títulos disponíveis na biblioteca.</p>
+      </div>
+      <div style="display: flex; gap: 10px;">
+        <button class="btn btn-primary" onclick="abrirModal('modal-novo-livro')">+ Novo Livro</button>
+      </div>
+    </div>
+
+    <!-- Tabela de Livros -->
+    <div class="card">
+      <div class="card-header">
+        <h2>Catálogo de Exemplares</h2>
+        <div class="search-box">
+          <!-- Campo de busca para o exercício de Manutenção Preventiva/Evolutiva -->
+          <input type="text" id="campo-busca" class="form-control" placeholder="🔍 Buscar por título, autor ou categoria...">
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th style="width: 60px;">ID</th>
+              <th>Título</th>
+              <th>Autor</th>
+              <th>ISBN</th>
+              <th>Categoria</th>
+              <th>Ano</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="tabela-livros">
+            <tr>
+              <td colspan="7" style="text-align: center; color: var(--muted); padding: 2rem;">Carregando livros...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal Cadastrar Novo Livro -->
+  <div class="modal-overlay" id="modal-novo-livro">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Cadastrar Novo Livro</h3>
+        <button class="modal-close" onclick="fecharModal('modal-novo-livro')">&times;</button>
+      </div>
+      <form id="form-novo-livro">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="livro-isbn">ISBN (Opcional):</label>
+            <div style="display: flex; gap: 8px;">
+              <input type="text" id="livro-isbn" class="form-control" placeholder="Ex: 9788576082675">
+              <!-- Botão para o exercício de Manutenção Adaptativa (ADAP-02) -->
+              <button type="button" id="btn-buscar-isbn" class="btn btn-secondary btn-sm" title="Consultar dados via API pública">Buscar</button>
+            </div>
+            <small style="color: var(--muted); font-size: 0.75rem;">Para o chamado ADAP-02: busca automática via API externa.</small>
+          </div>
+
+          <div class="form-group">
+            <label for="livro-titulo">Título da Obra: *</label>
+            <input type="text" id="livro-titulo" class="form-control" required placeholder="Ex: Engenharia de Software">
+          </div>
+
+          <div class="form-group">
+            <label for="livro-autor">Autor(es): *</label>
+            <input type="text" id="livro-autor" class="form-control" required placeholder="Ex: Ian Sommerville">
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div class="form-group">
+              <label for="livro-categoria">Categoria:</label>
+              <input type="text" id="livro-categoria" class="form-control" placeholder="Ex: Computação">
+            </div>
+            <div class="form-group">
+              <label for="livro-ano">Ano de Publicação:</label>
+              <!-- ⚠️ Exercício CORR-03: falta de validação robusta -->
+              <input type="number" id="livro-ano" class="form-control" placeholder="Ex: 2021">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="fecharModal('modal-novo-livro')">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Salvar Livro</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Rodapé -->
+  <footer class="footer">
+    <p>SISB © 2026 - SENAI CIMATEC | Disciplina: Manutenção e Testes de Sistemas</p>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/livros.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "name": "sisb-sistema-biblioteca",
+  "version": "1.0.0",
+  "description": "SISB - Sistema de Informação de Biblioteca (Projeto de Manutenção de Sistemas - SENAI CIMATEC)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "seed": "node database/seed.js",
+    "test": "node --test"
+  },
+  "keywords": [
+    "senai",
+    "cimatec",
+    "manutencao-de-sistemas",
+    "biblioteca",
+    "express",
+    "sqlite"
+  ],
+  "author": "SENAI CIMATEC",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "sqlite3": "^5.1.7"
+  }
+}

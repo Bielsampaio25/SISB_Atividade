@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SISB - Sistema de Informação de Biblioteca | SENAI CIMATEC</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <a href="index.html" class="nav-brand">
+      <span class="brand-badge">SENAI</span>
+      <span class="brand-title">SISB</span>
+      <span class="nav-subtitle">Gestão Bibliotecária</span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Dashboard</a></li>
+        <li><a href="livros.html">Catálogo de Livros</a></li>
+        <li><a href="emprestimos.html">Empréstimos & Circulação</a></li>
+        <li><a href="usuarios.html">Leitores & Usuários</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Container Principal -->
+  <main class="container">
+    <div class="page-header">
+      <div class="page-title">
+        <h1>Painel de Controle</h1>
+        <p>Visão geral do acervo, usuários e status de circulação da biblioteca.</p>
+      </div>
+      <div>
+        <a href="emprestimos.html" class="btn btn-primary">+ Novo Empréstimo</a>
+      </div>
+    </div>
+
+    <!-- Banner informativo da disciplina -->
+    <div class="banner-alerta">
+      <div>
+        <strong>Ambiente Didático Ativo:</strong> Sistema preparado para a disciplina de <em>Manutenção de Sistemas</em>.
+      </div>
+      <span style="font-size: 0.8rem; background: rgba(0,0,0,0.06); padding: 4px 8px; border-radius: 4px;">SENAI CIMATEC</span>
+    </div>
+
+    <!-- Cards de Métricas -->
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-header">
+          <span>Acervo Total</span>
+          <div class="metric-icon icon-blue">📚</div>
+        </div>
+        <div class="metric-value" id="met-total-livros">--</div>
+        <div class="metric-footer" id="met-sub-livros">Disponíveis: -- | Emprestados: --</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-header">
+          <span>Leitores Cadastrados</span>
+          <div class="metric-icon icon-green">👥</div>
+        </div>
+        <div class="metric-value" id="met-total-usuarios">--</div>
+        <div class="metric-footer">Alunos e colaboradores ativos</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-header">
+          <span>Empréstimos em Aberto</span>
+          <div class="metric-icon icon-orange">🔄</div>
+        </div>
+        <div class="metric-value" id="met-emprestimos-ativos">--</div>
+        <div class="metric-footer">Exemplares em circulação</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-header">
+          <span>Atrasos Críticos</span>
+          <div class="metric-icon icon-red">⚠️</div>
+        </div>
+        <div class="metric-value" id="met-atrasados">--</div>
+        <div class="metric-footer" id="met-multas">Multas estimadas: R$ 0,00</div>
+      </div>
+    </div>
+
+    <!-- Ações Rápidas e Listagem Resumida -->
+    <div class="card">
+      <div class="card-header">
+        <h2>Empréstimos Recentes com Pendência</h2>
+        <a href="emprestimos.html" class="btn btn-secondary btn-sm">Ver Todos</a>
+      </div>
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Livro</th>
+              <th>Leitor (Matrícula)</th>
+              <th>Data Empréstimo</th>
+              <th>Devolução Prevista</th>
+              <th>Status</th>
+              <th>Ação</th>
+            </tr>
+          </thead>
+          <tbody id="tabela-recentes">
+            <tr>
+              <td colspan="7" style="text-align: center; color: var(--muted); padding: 2rem;">Carregando registros...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="footer">
+    <p>SISB © 2026 - SENAI CIMATEC | Disciplina: Manutenção e Testes de Sistemas | Professor: ALLAN ALMEIDA SANTOS |Dev8</p>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
