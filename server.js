@@ -253,11 +253,11 @@ app.post('/api/emprestimos/:id/devolver', (req, res) => {
     const diffTempo = dataAtual.getTime() - dataPrev.getTime();
     const diasAtraso = Math.ceil(diffTempo / (1000 * 60 * 60 * 24));
 
-    if (diasAtraso > 0) {
-      const taxaFixaProcessamento = "5.00"; // <-- STRING! ERRO PROPITAL
+     if (diasAtraso > 0) {
+      const taxaFixaProcessamento = 5.00;
       const taxaDiaria = 2.00;
-      // Erro: Concatena a string "5.00" com o cálculo de (diasAtraso * 2.00)
-      valorMulta = taxaFixaProcessamento + (diasAtraso * taxaDiaria); 
+      const multaCalculada = taxaFixaProcessamento + (diasAtraso * taxaDiaria);
+      valorMulta = Number(multaCalculada.toFixed(2));
     }
 
     // Atualiza o registro de empréstimo
