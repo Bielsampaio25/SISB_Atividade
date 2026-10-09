@@ -78,6 +78,24 @@ function initDatabase() {
       )
     `);
 
+    db.run(`
+      CREATE TRIGGER IF NOT EXISTS sincronizar_status_livro_apos_atualizacao_emprestimo
+      AFTER UPDATE OF status ON emprestimos
+      FOR EACH ROW
+      WHEN OLD.status <> NEW.status
+      BEGIN
+        UPDATE livros
+        SET status = CASE
+          WHEN EXISTS (
+            SELECT 1 FROM emprestimos
+            WHERE livro_id = NEW.livro_id AND status = 'ativo'
+          ) THEN 'emprestado'
+          ELSE 'disponivel'
+        END
+        WHERE id = NEW.livro_id;
+      END;
+    `);
+
     console.log('📦 Tabelas verificadas/criadas com sucesso.');
   });
 }
